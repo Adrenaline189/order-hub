@@ -1,0 +1,7 @@
+{
+  "/integrations/page": "app/integrations/page.js",
+  "/chat/page": "app/chat/page.js",
+  "/sync-status/page": "app/sync-status/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/connections/page": "app/connections/page.js"
+}

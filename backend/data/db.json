@@ -1,0 +1,977 @@
+{
+  "tenants": [
+    {
+      "id": "tenant_cprenk",
+      "name": "Test Shop",
+      "plan": "free",
+      "created_at": "2026-03-18T23:49:20.383Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "user_r9d99c",
+      "tenant_id": "tenant_cprenk",
+      "email": "test@example.com",
+      "name": "Test User",
+      "role": "owner",
+      "password_salt": "f2d46a2fddf81d241b60504cc78fcc49",
+      "password_hash": "c42bcf377ad1fc57fef9037bd0d165044d8fb58884cee42a2b2f0dca04e8c69ee958a1cd6890e740f551a4b1610127798b1af68655d7eec4667331baa4dfe799",
+      "created_at": "2026-03-18T23:49:20.385Z"
+    }
+  ],
+  "integrations": [
+    {
+      "tenant_id": "test-shop",
+      "provider": "shopee",
+      "shop_id": null,
+      "shop_name": "ร้านทดสอบ",
+      "credentials": {
+        "api_key": "test123",
+        "shop_name": "ร้านทดสอบ"
+      },
+      "last_sync_at": "2026-03-19T05:03:44.428Z",
+      "error_message": null,
+      "id": "int_5yacb4",
+      "status": "disconnected",
+      "created_at": "2026-03-18T23:17:12.652Z",
+      "updated_at": "2026-03-19T08:46:22.804Z",
+      "sync_enabled": false
+    },
+    {
+      "tenant_id": "test-shop",
+      "provider": "csv",
+      "shop_id": null,
+      "shop_name": "csv",
+      "credentials": {
+        "api_key": "",
+        "api_secret": "",
+        "shop_id": "",
+        "shop_name": ""
+      },
+      "last_sync_at": "2026-03-19T00:45:46.518Z",
+      "error_message": null,
+      "id": "int_lg0g9x",
+      "status": "disconnected",
+      "created_at": "2026-03-19T00:45:09.213Z",
+      "updated_at": "2026-03-19T06:15:28.449Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "provider": "tiktok",
+      "shop_id": null,
+      "shop_name": "tiktok",
+      "credentials": {
+        "api_key": "",
+        "api_secret": "",
+        "shop_id": "",
+        "shop_name": ""
+      },
+      "last_sync_at": "2026-03-19T05:03:48.369Z",
+      "error_message": null,
+      "id": "int_k1pow8",
+      "status": "disconnected",
+      "created_at": "2026-03-19T00:45:14.786Z",
+      "updated_at": "2026-03-19T08:46:25.253Z",
+      "sync_enabled": false
+    },
+    {
+      "tenant_id": "test-shop",
+      "provider": "lazada",
+      "shop_id": null,
+      "shop_name": "lazada",
+      "credentials": {
+        "api_key": "",
+        "api_secret": "",
+        "shop_id": "",
+        "shop_name": ""
+      },
+      "last_sync_at": "2026-03-19T05:03:47.288Z",
+      "error_message": null,
+      "id": "int_e3t8l4",
+      "status": "disconnected",
+      "created_at": "2026-03-19T00:45:18.750Z",
+      "updated_at": "2026-03-19T08:46:24.119Z",
+      "sync_enabled": false
+    },
+    {
+      "tenant_id": "test-shop",
+      "provider": "shopify",
+      "shop_id": null,
+      "shop_name": "shopify",
+      "credentials": {
+        "api_key": "",
+        "api_secret": "",
+        "shop_id": "",
+        "shop_name": ""
+      },
+      "last_sync_at": "2026-03-19T05:03:53.287Z",
+      "error_message": null,
+      "id": "int_9t6tz8",
+      "status": "disconnected",
+      "created_at": "2026-03-19T00:45:29.419Z",
+      "updated_at": "2026-03-19T07:04:15.297Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "provider": "shopee",
+      "shop_id": null,
+      "shop_name": "Test Shop",
+      "credentials": {
+        "shop_name": "Test Shop"
+      },
+      "last_sync_at": "2026-03-19T07:07:47.860Z",
+      "error_message": null,
+      "id": "int_gtr24p",
+      "status": "disconnected",
+      "created_at": "2026-03-19T07:07:27.356Z",
+      "updated_at": "2026-03-19T07:08:00.187Z",
+      "sync_enabled": false
+    }
+  ],
+  "orders": [
+    {
+      "tenant_id": "test-shop",
+      "integration_id": null,
+      "external_id": "SH001",
+      "source": "shopee",
+      "status": "paid",
+      "total": 1500,
+      "currency": "THB",
+      "customer_name": "สมชาย ใจดี",
+      "items": [],
+      "raw": null,
+      "id": "ord_h2t3aj",
+      "created_at": "2026-03-18T23:17:12.646Z",
+      "updated_at": "2026-03-18T23:17:12.647Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": null,
+      "external_id": "SH002",
+      "source": "shopee",
+      "status": "pending",
+      "total": 2000,
+      "currency": "THB",
+      "customer_name": "สมหญิง รักสวย",
+      "items": [],
+      "raw": null,
+      "id": "ord_2qncwy",
+      "created_at": "2026-03-18T23:17:12.647Z",
+      "updated_at": "2026-03-18T23:17:12.647Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": null,
+      "external_id": "SH003",
+      "source": "shopee",
+      "status": "shipped",
+      "total": 3500,
+      "currency": "THB",
+      "customer_name": "สมศักดิ์ มั่งมี",
+      "items": [],
+      "raw": null,
+      "id": "ord_cxxdat",
+      "created_at": "2026-03-18T23:17:12.647Z",
+      "updated_at": "2026-03-18T23:17:12.647Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SHX91QVY",
+      "source": "shopee",
+      "status": "paid",
+      "total": 1200,
+      "currency": "THB",
+      "customer_name": "สมชาย ใจดี",
+      "customer_phone": "0812345678",
+      "items": [],
+      "raw": {
+        "external_id": "SHX91QVY",
+        "status": "paid",
+        "total": 1200,
+        "customer_name": "สมชาย ใจดี",
+        "customer_phone": "0812345678"
+      },
+      "id": "ord_k9lgdu",
+      "created_at": "2026-03-19T00:45:37.420Z",
+      "updated_at": "2026-03-19T00:45:37.420Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SH0UU74M",
+      "source": "shopee",
+      "status": "pending",
+      "total": 850,
+      "currency": "THB",
+      "customer_name": "สมหญิง รักสวย",
+      "customer_phone": "0898765432",
+      "items": [],
+      "raw": {
+        "external_id": "SH0UU74M",
+        "status": "pending",
+        "total": 850,
+        "customer_name": "สมหญิง รักสวย",
+        "customer_phone": "0898765432"
+      },
+      "id": "ord_jbnbmy",
+      "created_at": "2026-03-19T00:45:37.420Z",
+      "updated_at": "2026-03-19T00:45:37.420Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SHIZX16Q",
+      "source": "shopee",
+      "status": "shipped",
+      "total": 2500,
+      "currency": "THB",
+      "customer_name": "สมศักดิ์ มั่งมี",
+      "customer_phone": "0861234567",
+      "items": [],
+      "raw": {
+        "external_id": "SHIZX16Q",
+        "status": "shipped",
+        "total": 2500,
+        "customer_name": "สมศักดิ์ มั่งมี",
+        "customer_phone": "0861234567"
+      },
+      "id": "ord_l3osyy",
+      "created_at": "2026-03-19T00:45:37.420Z",
+      "updated_at": "2026-03-19T00:45:37.420Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_e3t8l4",
+      "external_id": "LZPRRRZQ",
+      "source": "lazada",
+      "status": "paid",
+      "total": 3200,
+      "currency": "THB",
+      "customer_name": "วิภา ขยัน",
+      "customer_phone": "0912345678",
+      "items": [],
+      "raw": {
+        "external_id": "LZPRRRZQ",
+        "status": "paid",
+        "total": 3200,
+        "customer_name": "วิภา ขยัน",
+        "customer_phone": "0912345678"
+      },
+      "id": "ord_fym0eu",
+      "created_at": "2026-03-19T00:45:41.050Z",
+      "updated_at": "2026-03-19T00:45:41.050Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_e3t8l4",
+      "external_id": "LZL3XUCT",
+      "source": "lazada",
+      "status": "packed",
+      "total": 990,
+      "currency": "THB",
+      "customer_name": "ประยุทธ์ จริงใจ",
+      "customer_phone": "0923456789",
+      "items": [],
+      "raw": {
+        "external_id": "LZL3XUCT",
+        "status": "packed",
+        "total": 990,
+        "customer_name": "ประยุทธ์ จริงใจ",
+        "customer_phone": "0923456789"
+      },
+      "id": "ord_rhmlsn",
+      "created_at": "2026-03-19T00:45:41.050Z",
+      "updated_at": "2026-03-19T00:45:41.050Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TT7XKJ8U",
+      "source": "tiktok",
+      "status": "paid",
+      "total": 450,
+      "currency": "THB",
+      "customer_name": "มานะ ตั้งใจ",
+      "customer_phone": "0934567890",
+      "items": [],
+      "raw": {
+        "external_id": "TT7XKJ8U",
+        "status": "paid",
+        "total": 450,
+        "customer_name": "มานะ ตั้งใจ",
+        "customer_phone": "0934567890"
+      },
+      "id": "ord_197df7",
+      "created_at": "2026-03-19T00:45:44.086Z",
+      "updated_at": "2026-03-19T00:45:44.086Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TTR7IQVO",
+      "source": "tiktok",
+      "status": "pending",
+      "total": 1800,
+      "currency": "THB",
+      "customer_name": "มานี มีสุข",
+      "customer_phone": "0945678901",
+      "items": [],
+      "raw": {
+        "external_id": "TTR7IQVO",
+        "status": "pending",
+        "total": 1800,
+        "customer_name": "มานี มีสุข",
+        "customer_phone": "0945678901"
+      },
+      "id": "ord_sa96m4",
+      "created_at": "2026-03-19T00:45:44.086Z",
+      "updated_at": "2026-03-19T00:45:44.086Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TTGJBDP7",
+      "source": "tiktok",
+      "status": "completed",
+      "total": 5500,
+      "currency": "THB",
+      "customer_name": "สุขใจ ดีใจ",
+      "customer_phone": "0956789012",
+      "items": [],
+      "raw": {
+        "external_id": "TTGJBDP7",
+        "status": "completed",
+        "total": 5500,
+        "customer_name": "สุขใจ ดีใจ",
+        "customer_phone": "0956789012"
+      },
+      "id": "ord_tx4yhz",
+      "created_at": "2026-03-19T00:45:44.086Z",
+      "updated_at": "2026-03-19T00:45:44.086Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_9t6tz8",
+      "external_id": "SFB18DUB",
+      "source": "shopify",
+      "status": "paid",
+      "total": 150,
+      "currency": "THB",
+      "customer_name": "John Smith",
+      "customer_phone": "+14155551234",
+      "items": [],
+      "raw": {
+        "external_id": "SFB18DUB",
+        "status": "paid",
+        "total": 150,
+        "customer_name": "John Smith",
+        "customer_phone": "+14155551234"
+      },
+      "id": "ord_0bsbns",
+      "created_at": "2026-03-19T00:45:49.819Z",
+      "updated_at": "2026-03-19T00:45:49.819Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_9t6tz8",
+      "external_id": "SFFZR290",
+      "source": "shopify",
+      "status": "shipped",
+      "total": 280,
+      "currency": "THB",
+      "customer_name": "Jane Doe",
+      "customer_phone": "+14155555678",
+      "items": [],
+      "raw": {
+        "external_id": "SFFZR290",
+        "status": "shipped",
+        "total": 280,
+        "customer_name": "Jane Doe",
+        "customer_phone": "+14155555678"
+      },
+      "id": "ord_9ikrd5",
+      "created_at": "2026-03-19T00:45:49.819Z",
+      "updated_at": "2026-03-19T00:45:49.819Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SHZ1T8QP",
+      "source": "shopee",
+      "status": "paid",
+      "total": 1200,
+      "currency": "THB",
+      "customer_name": "สมชาย ใจดี",
+      "customer_phone": "0812345678",
+      "items": [],
+      "raw": {
+        "external_id": "SHZ1T8QP",
+        "status": "paid",
+        "total": 1200,
+        "customer_name": "สมชาย ใจดี",
+        "customer_phone": "0812345678"
+      },
+      "id": "ord_ynzmmc",
+      "created_at": "2026-03-19T00:52:11.438Z",
+      "updated_at": "2026-03-19T00:52:11.438Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SHJ6Z5DX",
+      "source": "shopee",
+      "status": "pending",
+      "total": 850,
+      "currency": "THB",
+      "customer_name": "สมหญิง รักสวย",
+      "customer_phone": "0898765432",
+      "items": [],
+      "raw": {
+        "external_id": "SHJ6Z5DX",
+        "status": "pending",
+        "total": 850,
+        "customer_name": "สมหญิง รักสวย",
+        "customer_phone": "0898765432"
+      },
+      "id": "ord_nxesbc",
+      "created_at": "2026-03-19T00:52:11.439Z",
+      "updated_at": "2026-03-19T00:52:11.439Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SHU2DB24",
+      "source": "shopee",
+      "status": "shipped",
+      "total": 2500,
+      "currency": "THB",
+      "customer_name": "สมศักดิ์ มั่งมี",
+      "customer_phone": "0861234567",
+      "items": [],
+      "raw": {
+        "external_id": "SHU2DB24",
+        "status": "shipped",
+        "total": 2500,
+        "customer_name": "สมศักดิ์ มั่งมี",
+        "customer_phone": "0861234567"
+      },
+      "id": "ord_h7p2gh",
+      "created_at": "2026-03-19T00:52:11.439Z",
+      "updated_at": "2026-03-19T00:52:11.439Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_e3t8l4",
+      "external_id": "LZKIEAP1",
+      "source": "lazada",
+      "status": "paid",
+      "total": 3200,
+      "currency": "THB",
+      "customer_name": "วิภา ขยัน",
+      "customer_phone": "0912345678",
+      "items": [],
+      "raw": {
+        "external_id": "LZKIEAP1",
+        "status": "paid",
+        "total": 3200,
+        "customer_name": "วิภา ขยัน",
+        "customer_phone": "0912345678"
+      },
+      "id": "ord_h1gs1w",
+      "created_at": "2026-03-19T00:52:14.285Z",
+      "updated_at": "2026-03-19T00:52:14.285Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_e3t8l4",
+      "external_id": "LZMCK77Y",
+      "source": "lazada",
+      "status": "packed",
+      "total": 990,
+      "currency": "THB",
+      "customer_name": "ประยุทธ์ จริงใจ",
+      "customer_phone": "0923456789",
+      "items": [],
+      "raw": {
+        "external_id": "LZMCK77Y",
+        "status": "packed",
+        "total": 990,
+        "customer_name": "ประยุทธ์ จริงใจ",
+        "customer_phone": "0923456789"
+      },
+      "id": "ord_9ecw8l",
+      "created_at": "2026-03-19T00:52:14.285Z",
+      "updated_at": "2026-03-19T00:52:14.285Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TTZR9HTG",
+      "source": "tiktok",
+      "status": "paid",
+      "total": 450,
+      "currency": "THB",
+      "customer_name": "มานะ ตั้งใจ",
+      "customer_phone": "0934567890",
+      "items": [],
+      "raw": {
+        "external_id": "TTZR9HTG",
+        "status": "paid",
+        "total": 450,
+        "customer_name": "มานะ ตั้งใจ",
+        "customer_phone": "0934567890"
+      },
+      "id": "ord_x0wf0g",
+      "created_at": "2026-03-19T00:52:16.685Z",
+      "updated_at": "2026-03-19T00:52:16.685Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TTRF7GYG",
+      "source": "tiktok",
+      "status": "pending",
+      "total": 1800,
+      "currency": "THB",
+      "customer_name": "มานี มีสุข",
+      "customer_phone": "0945678901",
+      "items": [],
+      "raw": {
+        "external_id": "TTRF7GYG",
+        "status": "pending",
+        "total": 1800,
+        "customer_name": "มานี มีสุข",
+        "customer_phone": "0945678901"
+      },
+      "id": "ord_dcoltk",
+      "created_at": "2026-03-19T00:52:16.685Z",
+      "updated_at": "2026-03-19T00:52:16.685Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TTAEYMZH",
+      "source": "tiktok",
+      "status": "completed",
+      "total": 5500,
+      "currency": "THB",
+      "customer_name": "สุขใจ ดีใจ",
+      "customer_phone": "0956789012",
+      "items": [],
+      "raw": {
+        "external_id": "TTAEYMZH",
+        "status": "completed",
+        "total": 5500,
+        "customer_name": "สุขใจ ดีใจ",
+        "customer_phone": "0956789012"
+      },
+      "id": "ord_xlyqwt",
+      "created_at": "2026-03-19T00:52:16.686Z",
+      "updated_at": "2026-03-19T00:52:16.686Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_9t6tz8",
+      "external_id": "SFE4DBHF",
+      "source": "shopify",
+      "status": "paid",
+      "total": 150,
+      "currency": "THB",
+      "customer_name": "John Smith",
+      "customer_phone": "+14155551234",
+      "items": [],
+      "raw": {
+        "external_id": "SFE4DBHF",
+        "status": "paid",
+        "total": 150,
+        "customer_name": "John Smith",
+        "customer_phone": "+14155551234"
+      },
+      "id": "ord_8vfhmr",
+      "created_at": "2026-03-19T00:52:20.482Z",
+      "updated_at": "2026-03-19T00:52:20.482Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_9t6tz8",
+      "external_id": "SF1C3SY5",
+      "source": "shopify",
+      "status": "shipped",
+      "total": 280,
+      "currency": "THB",
+      "customer_name": "Jane Doe",
+      "customer_phone": "+14155555678",
+      "items": [],
+      "raw": {
+        "external_id": "SF1C3SY5",
+        "status": "shipped",
+        "total": 280,
+        "customer_name": "Jane Doe",
+        "customer_phone": "+14155555678"
+      },
+      "id": "ord_m0qvn1",
+      "created_at": "2026-03-19T00:52:20.482Z",
+      "updated_at": "2026-03-19T00:52:20.482Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SH6HAQVB",
+      "source": "shopee",
+      "status": "paid",
+      "total": 1200,
+      "currency": "THB",
+      "customer_name": "สมชาย ใจดี",
+      "customer_phone": "0812345678",
+      "items": [],
+      "raw": {
+        "external_id": "SH6HAQVB",
+        "status": "paid",
+        "total": 1200,
+        "customer_name": "สมชาย ใจดี",
+        "customer_phone": "0812345678"
+      },
+      "id": "ord_3kwkz4",
+      "created_at": "2026-03-19T05:03:44.428Z",
+      "updated_at": "2026-03-19T05:03:44.428Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SHJCFT6X",
+      "source": "shopee",
+      "status": "pending",
+      "total": 850,
+      "currency": "THB",
+      "customer_name": "สมหญิง รักสวย",
+      "customer_phone": "0898765432",
+      "items": [],
+      "raw": {
+        "external_id": "SHJCFT6X",
+        "status": "pending",
+        "total": 850,
+        "customer_name": "สมหญิง รักสวย",
+        "customer_phone": "0898765432"
+      },
+      "id": "ord_f350q4",
+      "created_at": "2026-03-19T05:03:44.428Z",
+      "updated_at": "2026-03-19T05:03:44.428Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_5yacb4",
+      "external_id": "SH6DCKCR",
+      "source": "shopee",
+      "status": "shipped",
+      "total": 2500,
+      "currency": "THB",
+      "customer_name": "สมศักดิ์ มั่งมี",
+      "customer_phone": "0861234567",
+      "items": [],
+      "raw": {
+        "external_id": "SH6DCKCR",
+        "status": "shipped",
+        "total": 2500,
+        "customer_name": "สมศักดิ์ มั่งมี",
+        "customer_phone": "0861234567"
+      },
+      "id": "ord_yeln04",
+      "created_at": "2026-03-19T05:03:44.428Z",
+      "updated_at": "2026-03-19T05:03:44.428Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_e3t8l4",
+      "external_id": "LZ1PN0TY",
+      "source": "lazada",
+      "status": "paid",
+      "total": 3200,
+      "currency": "THB",
+      "customer_name": "วิภา ขยัน",
+      "customer_phone": "0912345678",
+      "items": [],
+      "raw": {
+        "external_id": "LZ1PN0TY",
+        "status": "paid",
+        "total": 3200,
+        "customer_name": "วิภา ขยัน",
+        "customer_phone": "0912345678"
+      },
+      "id": "ord_jyq9sv",
+      "created_at": "2026-03-19T05:03:47.288Z",
+      "updated_at": "2026-03-19T05:03:47.288Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_e3t8l4",
+      "external_id": "LZ8ZQI8K",
+      "source": "lazada",
+      "status": "packed",
+      "total": 990,
+      "currency": "THB",
+      "customer_name": "ประยุทธ์ จริงใจ",
+      "customer_phone": "0923456789",
+      "items": [],
+      "raw": {
+        "external_id": "LZ8ZQI8K",
+        "status": "packed",
+        "total": 990,
+        "customer_name": "ประยุทธ์ จริงใจ",
+        "customer_phone": "0923456789"
+      },
+      "id": "ord_t8tqvz",
+      "created_at": "2026-03-19T05:03:47.288Z",
+      "updated_at": "2026-03-19T05:03:47.288Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TTTA94ER",
+      "source": "tiktok",
+      "status": "paid",
+      "total": 450,
+      "currency": "THB",
+      "customer_name": "มานะ ตั้งใจ",
+      "customer_phone": "0934567890",
+      "items": [],
+      "raw": {
+        "external_id": "TTTA94ER",
+        "status": "paid",
+        "total": 450,
+        "customer_name": "มานะ ตั้งใจ",
+        "customer_phone": "0934567890"
+      },
+      "id": "ord_ovcxk7",
+      "created_at": "2026-03-19T05:03:48.369Z",
+      "updated_at": "2026-03-19T05:03:48.369Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TT4QM7YG",
+      "source": "tiktok",
+      "status": "pending",
+      "total": 1800,
+      "currency": "THB",
+      "customer_name": "มานี มีสุข",
+      "customer_phone": "0945678901",
+      "items": [],
+      "raw": {
+        "external_id": "TT4QM7YG",
+        "status": "pending",
+        "total": 1800,
+        "customer_name": "มานี มีสุข",
+        "customer_phone": "0945678901"
+      },
+      "id": "ord_q949yt",
+      "created_at": "2026-03-19T05:03:48.369Z",
+      "updated_at": "2026-03-19T05:03:48.369Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_k1pow8",
+      "external_id": "TTH8KG0D",
+      "source": "tiktok",
+      "status": "completed",
+      "total": 5500,
+      "currency": "THB",
+      "customer_name": "สุขใจ ดีใจ",
+      "customer_phone": "0956789012",
+      "items": [],
+      "raw": {
+        "external_id": "TTH8KG0D",
+        "status": "completed",
+        "total": 5500,
+        "customer_name": "สุขใจ ดีใจ",
+        "customer_phone": "0956789012"
+      },
+      "id": "ord_deobzd",
+      "created_at": "2026-03-19T05:03:48.369Z",
+      "updated_at": "2026-03-19T05:03:48.369Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_9t6tz8",
+      "external_id": "SF6ADBZH",
+      "source": "shopify",
+      "status": "paid",
+      "total": 150,
+      "currency": "THB",
+      "customer_name": "John Smith",
+      "customer_phone": "+14155551234",
+      "items": [],
+      "raw": {
+        "external_id": "SF6ADBZH",
+        "status": "paid",
+        "total": 150,
+        "customer_name": "John Smith",
+        "customer_phone": "+14155551234"
+      },
+      "id": "ord_sytd57",
+      "created_at": "2026-03-19T05:03:53.287Z",
+      "updated_at": "2026-03-19T05:03:53.287Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_9t6tz8",
+      "external_id": "SF9TVEHA",
+      "source": "shopify",
+      "status": "shipped",
+      "total": 280,
+      "currency": "THB",
+      "customer_name": "Jane Doe",
+      "customer_phone": "+14155555678",
+      "items": [],
+      "raw": {
+        "external_id": "SF9TVEHA",
+        "status": "shipped",
+        "total": 280,
+        "customer_name": "Jane Doe",
+        "customer_phone": "+14155555678"
+      },
+      "id": "ord_k7jevy",
+      "created_at": "2026-03-19T05:03:53.287Z",
+      "updated_at": "2026-03-19T05:03:53.287Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_gtr24p",
+      "external_id": "SHFT572F",
+      "source": "shopee",
+      "status": "paid",
+      "total": 1200,
+      "currency": "THB",
+      "customer_name": "สมชาย ใจดี",
+      "customer_phone": "0812345678",
+      "items": [],
+      "raw": {
+        "external_id": "SHFT572F",
+        "status": "paid",
+        "total": 1200,
+        "customer_name": "สมชาย ใจดี",
+        "customer_phone": "0812345678"
+      },
+      "id": "ord_3xv181",
+      "created_at": "2026-03-19T07:07:47.860Z",
+      "updated_at": "2026-03-19T07:07:47.860Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_gtr24p",
+      "external_id": "SH12A11H",
+      "source": "shopee",
+      "status": "pending",
+      "total": 850,
+      "currency": "THB",
+      "customer_name": "สมหญิง รักสวย",
+      "customer_phone": "0898765432",
+      "items": [],
+      "raw": {
+        "external_id": "SH12A11H",
+        "status": "pending",
+        "total": 850,
+        "customer_name": "สมหญิง รักสวย",
+        "customer_phone": "0898765432"
+      },
+      "id": "ord_c0u8qr",
+      "created_at": "2026-03-19T07:07:47.860Z",
+      "updated_at": "2026-03-19T07:07:47.860Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_gtr24p",
+      "external_id": "SHST13LP",
+      "source": "shopee",
+      "status": "shipped",
+      "total": 2500,
+      "currency": "THB",
+      "customer_name": "สมศักดิ์ มั่งมี",
+      "customer_phone": "0861234567",
+      "items": [],
+      "raw": {
+        "external_id": "SHST13LP",
+        "status": "shipped",
+        "total": 2500,
+        "customer_name": "สมศักดิ์ มั่งมี",
+        "customer_phone": "0861234567"
+      },
+      "id": "ord_g1nith",
+      "created_at": "2026-03-19T07:07:47.860Z",
+      "updated_at": "2026-03-19T07:07:47.860Z"
+    }
+  ],
+  "syncLogs": [
+    {
+      "integration_id": "int_lg0g9x",
+      "status": "completed",
+      "orders_synced": 5,
+      "orders_skipped": 0,
+      "completed_at": "2026-03-19T00:45:11.120Z",
+      "id": "sync_o7s23h",
+      "started_at": "2026-03-19T00:45:11.120Z"
+    },
+    {
+      "integration_id": "int_k1pow8",
+      "status": "completed",
+      "orders_synced": 5,
+      "orders_skipped": 0,
+      "completed_at": "2026-03-19T00:45:15.951Z",
+      "id": "sync_fj5fsb",
+      "started_at": "2026-03-19T00:45:15.951Z"
+    },
+    {
+      "integration_id": "int_e3t8l4",
+      "status": "completed",
+      "orders_synced": 5,
+      "orders_skipped": 0,
+      "completed_at": "2026-03-19T00:45:20.218Z",
+      "id": "sync_on1nck",
+      "started_at": "2026-03-19T00:45:20.218Z"
+    },
+    {
+      "integration_id": "int_9t6tz8",
+      "status": "completed",
+      "orders_synced": 5,
+      "orders_skipped": 0,
+      "completed_at": "2026-03-19T00:45:31.285Z",
+      "id": "sync_x6qhs3",
+      "started_at": "2026-03-19T00:45:31.285Z"
+    },
+    {
+      "integration_id": "int_5yacb4",
+      "status": "completed",
+      "orders_synced": 5,
+      "orders_skipped": 0,
+      "completed_at": "2026-03-19T00:45:34.667Z",
+      "id": "sync_x25iqg",
+      "started_at": "2026-03-19T00:45:34.667Z"
+    },
+    {
+      "integration_id": "int_lg0g9x",
+      "status": "completed",
+      "orders_synced": 5,
+      "orders_skipped": 0,
+      "completed_at": "2026-03-19T00:45:46.518Z",
+      "id": "sync_e5371l",
+      "started_at": "2026-03-19T00:45:46.518Z"
+    },
+    {
+      "integration_id": "int_9t6tz8",
+      "status": "completed",
+      "orders_synced": 5,
+      "orders_skipped": 0,
+      "completed_at": "2026-03-19T00:45:48.901Z",
+      "id": "sync_b8qytz",
+      "started_at": "2026-03-19T00:45:48.901Z"
+    }
+  ],
+  "oauth_states": [
+    {
+      "provider": "line",
+      "state": "9e7a2721afa9b9890ac7511dffeef109",
+      "tenant_id": "test-shop",
+      "created_at": "2026-03-22T07:16:15.944Z"
+    }
+  ]
+}

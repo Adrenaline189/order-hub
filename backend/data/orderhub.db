@@ -1,0 +1,57 @@
+{
+  "tenants": [],
+  "users": [],
+  "integrations": [
+    {
+      "tenant_id": "test-shop",
+      "provider": "shopee",
+      "shop_id": null,
+      "shop_name": "ร้านทดสอบ",
+      "credentials": {
+        "api_key": "test123",
+        "shop_name": "ร้านทดสอบ"
+      },
+      "last_sync_at": null,
+      "error_message": null,
+      "id": "int_eekxdd",
+      "status": "connected",
+      "created_at": "2026-03-18T23:15:36.718Z",
+      "updated_at": "2026-03-18T23:15:36.718Z"
+    }
+  ],
+  "orders": [
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_eekxdd",
+      "external_id": "SH001",
+      "source": "shopee",
+      "status": "paid",
+      "total": 1500,
+      "currency": "THB",
+      "customer_name": "สมชาย ใจดี",
+      "customer_phone": "0812345678",
+      "items": [],
+      "raw": null,
+      "id": "ord_biwii0",
+      "created_at": "2026-03-18T23:15:36.721Z",
+      "updated_at": "2026-03-18T23:15:36.721Z"
+    },
+    {
+      "tenant_id": "test-shop",
+      "integration_id": "int_eekxdd",
+      "external_id": "SH002",
+      "source": "shopee",
+      "status": "pending",
+      "total": 2000,
+      "currency": "THB",
+      "customer_name": "สมหญิง รักสวย",
+      "customer_phone": "0898765432",
+      "items": [],
+      "raw": null,
+      "id": "ord_h6dqrl",
+      "created_at": "2026-03-18T23:15:36.721Z",
+      "updated_at": "2026-03-18T23:15:36.721Z"
+    }
+  ],
+  "syncLogs": []
+}
