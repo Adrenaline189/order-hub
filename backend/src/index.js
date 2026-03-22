@@ -6,8 +6,8 @@ const fastify = require('fastify')({
   }
 });
 
-const { initDb } = require('./db');
-const { verifyToken } = require('./auth');
+const { initDatabase, query, db, refresh, save } = require('./db-compat');
+const apiRoutes = require('./routes/api-v1');
 
 // Register CORS
 fastify.register(require('@fastify/cors'), {
@@ -21,67 +21,39 @@ fastify.register(require('@fastify/multipart'), {
   }
 });
 
-// Auth decorator
-fastify.decorateRequest('user', null);
-fastify.decorateRequest('tenantId', null);
+// Health check
+fastify.get('/health', async () => ({ status: 'ok' }));
+fastify.get('/', async () => ({ 
+  name: 'Order Hub API', 
+  version: '1.0.0',
+  status: 'running'
+}));
 
-// Auth middleware hook
-fastify.addHook('onRequest', async (request, reply) => {
-  // Skip auth for public routes
-  const publicPaths = ['/', '/health', '/ready', '/auth/login', '/auth/register', '/csv/template', '/mock/providers'];
-  if (publicPaths.some(p => request.url.startsWith(p))) {
-    return;
-  }
+// Register API routes
+fastify.register(apiRoutes);
 
-  const authHeader = request.headers.authorization;
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.slice(7);
-    const payload = verifyToken(token);
-    if (payload) {
-      request.user = payload.userId;
-      request.tenantId = payload.tenantId;
-    }
-  }
+// Auth routes placeholder
+fastify.post('/auth/login', async (request, reply) => {
+  return { token: 'demo-token', tenant_id: 'test-shop' };
 });
 
-// Register routes
-fastify.register(require('./routes/health'));
-fastify.register(require('./routes/auth'));
-fastify.register(require('./routes/integrations'));
-fastify.register(require('./routes/orders'));
-fastify.register(require('./routes/dashboard'));
-fastify.register(require('./routes/revenue'));
-fastify.register(require('./routes/csv'));
-fastify.register(require('./routes/mock'));
-fastify.register(require('./routes/billing'));
-fastify.register(require('./routes/export'));
-fastify.register(require('./routes/excel'));
-fastify.register(require('./routes/notifications'));
-fastify.register(require('./routes/activity-logs'));
-fastify.register(require('./routes/sync-status'));
-fastify.register(require('./routes/shopify'));
-fastify.register(require('./routes/chat'));
-
-// Root route
-fastify.get('/', async (request, reply) => {
-  return {
-    name: 'Order Hub API',
-    version: '0.1.0',
-    endpoints: ['/health', '/integrations', '/orders', '/dashboard']
-  };
+fastify.post('/auth/register', async (request, reply) => {
+  return { token: 'demo-token', tenant_id: 'test-shop' };
 });
 
 // Start server
 const start = async () => {
   try {
+    console.log('🚀 Starting Order Hub API...');
+    
     // Initialize database
-    await initDb();
+    await initDatabase();
     
     const port = process.env.PORT || 3000;
     const host = process.env.HOST || '0.0.0.0';
     
     await fastify.listen({ port, host });
-    console.log(`🚀 Order Hub API running on http://localhost:${port}`);
+    console.log(`✅ Order Hub API running on http://localhost:${port}`);
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
