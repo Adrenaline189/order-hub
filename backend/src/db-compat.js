@@ -18,6 +18,21 @@ const initDatabase = async () => {
     await pool.query('SELECT NOW()');
     console.log('✅ PostgreSQL connected!');
     
+    // Drop existing tables to recreate with correct schema
+    await pool.query(`
+      DROP TABLE IF EXISTS oauth_states CASCADE;
+      DROP TABLE IF EXISTS webhooks CASCADE;
+      DROP TABLE IF EXISTS notifications CASCADE;
+      DROP TABLE IF EXISTS activity_logs CASCADE;
+      DROP TABLE IF EXISTS auto_reply_rules CASCADE;
+      DROP TABLE IF EXISTS messages CASCADE;
+      DROP TABLE IF EXISTS conversations CASCADE;
+      DROP TABLE IF EXISTS orders CASCADE;
+      DROP TABLE IF EXISTS integrations CASCADE;
+      DROP TABLE IF EXISTS tenants CASCADE;
+    `);
+    console.log('🗑️ Dropped existing tables');
+    
     // Create tables
     await pool.query(`
       CREATE TABLE IF NOT EXISTS tenants (
