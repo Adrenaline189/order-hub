@@ -18,22 +18,32 @@ const initDatabase = async () => {
     await pool.query('SELECT NOW()');
     console.log('✅ PostgreSQL connected!');
     
-    // Drop existing tables to recreate with correct schema
-    await pool.query(`
-      DROP TABLE IF EXISTS oauth_states CASCADE;
-      DROP TABLE IF EXISTS webhooks CASCADE;
-      DROP TABLE IF EXISTS notifications CASCADE;
-      DROP TABLE IF EXISTS activity_logs CASCADE;
-      DROP TABLE IF EXISTS auto_reply_rules CASCADE;
-      DROP TABLE IF EXISTS messages CASCADE;
-      DROP TABLE IF EXISTS conversations CASCADE;
-      DROP TABLE IF EXISTS orders CASCADE;
-      DROP TABLE IF EXISTS integrations CASCADE;
-      DROP TABLE IF EXISTS tenants CASCADE;
-    `);
-    console.log('🗑️ Dropped existing tables');
+    // Fix existing UUID columns to TEXT (if they exist from previous deploys)
+    try {
+      await pool.query(`ALTER TABLE tenants ALTER COLUMN id TYPE TEXT`);
+      await pool.query(`ALTER TABLE integrations ALTER COLUMN tenant_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE integrations ALTER COLUMN id TYPE TEXT`);
+      await pool.query(`ALTER TABLE orders ALTER COLUMN tenant_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE orders ALTER COLUMN id TYPE TEXT`);
+      await pool.query(`ALTER TABLE orders ALTER COLUMN integration_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE conversations ALTER COLUMN tenant_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE conversations ALTER COLUMN id TYPE TEXT`);
+      await pool.query(`ALTER TABLE conversations ALTER COLUMN integration_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE messages ALTER COLUMN tenant_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE messages ALTER COLUMN id TYPE TEXT`);
+      await pool.query(`ALTER TABLE messages ALTER COLUMN conversation_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE auto_reply_rules ALTER COLUMN tenant_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE auto_reply_rules ALTER COLUMN id TYPE TEXT`);
+      await pool.query(`ALTER TABLE activity_logs ALTER COLUMN tenant_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE activity_logs ALTER COLUMN id TYPE TEXT`);
+      await pool.query(`ALTER TABLE notifications ALTER COLUMN tenant_id TYPE TEXT`);
+      await pool.query(`ALTER TABLE notifications ALTER COLUMN id TYPE TEXT`);
+      console.log('🔧 Fixed column types');
+    } catch (e) {
+      console.log('⚠️ ALTER error (may be ok):', e.message);
+    }
     
-    // Create tables
+    // Create tables (use IF NOT EXISTS to avoid overwriting)
     await pool.query(`
       CREATE TABLE IF NOT EXISTS tenants (
         id TEXT PRIMARY KEY DEFAULT 'test-shop',
