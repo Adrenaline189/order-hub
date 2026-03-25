@@ -21,7 +21,7 @@ const initDatabase = async () => {
     // Create tables
     await pool.query(`
       CREATE TABLE IF NOT EXISTS tenants (
-        id UUID PRIMARY KEY DEFAULT 'test-shop',
+        id TEXT PRIMARY KEY DEFAULT 'test-shop',
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         plan VARCHAR(50) DEFAULT 'free',
@@ -30,8 +30,8 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS integrations (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        tenant_id VARCHAR(255) NOT NULL,
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
+        tenant_id TEXT NOT NULL,
         provider VARCHAR(50) NOT NULL,
         provider_name VARCHAR(255),
         shop_domain VARCHAR(255),
@@ -49,9 +49,9 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS orders (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        tenant_id VARCHAR(255) NOT NULL,
-        integration_id UUID,
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
+        tenant_id TEXT NOT NULL,
+        integration_id TEXT,
         external_id VARCHAR(255),
         source VARCHAR(50),
         status VARCHAR(50) DEFAULT 'pending',
@@ -69,8 +69,8 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS conversations (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        tenant_id VARCHAR(255) NOT NULL,
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
+        tenant_id TEXT NOT NULL,
         provider VARCHAR(50) NOT NULL,
         external_id VARCHAR(255),
         customer_name VARCHAR(255),
@@ -84,9 +84,9 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS messages (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        conversation_id UUID REFERENCES conversations(id) ON DELETE CASCADE,
-        tenant_id VARCHAR(255) NOT NULL,
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
+        conversation_id TEXT REFERENCES conversations(id) ON DELETE CASCADE,
+        tenant_id TEXT NOT NULL,
         provider VARCHAR(50),
         direction VARCHAR(20) NOT NULL,
         content TEXT,
@@ -97,8 +97,8 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS auto_reply_rules (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        tenant_id VARCHAR(255) NOT NULL,
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
+        tenant_id TEXT NOT NULL,
         provider VARCHAR(50),
         keyword VARCHAR(255) NOT NULL,
         response TEXT NOT NULL,
@@ -109,8 +109,8 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS activity_logs (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        tenant_id VARCHAR(255) NOT NULL,
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
+        tenant_id TEXT NOT NULL,
         action VARCHAR(100) NOT NULL,
         type VARCHAR(50),
         message TEXT,
@@ -119,8 +119,8 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS notifications (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        tenant_id VARCHAR(255) NOT NULL,
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
+        tenant_id TEXT NOT NULL,
         type VARCHAR(50) NOT NULL,
         title VARCHAR(255),
         message TEXT,
@@ -129,7 +129,7 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS webhooks (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         provider VARCHAR(50) NOT NULL,
         mode VARCHAR(50),
         verification_token VARCHAR(255),
@@ -138,10 +138,10 @@ const initDatabase = async () => {
       );
 
       CREATE TABLE IF NOT EXISTS oauth_states (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        id TEXT PRIMARY KEY DEFAULT gen_random_uuid(),
         provider VARCHAR(50) NOT NULL,
         state VARCHAR(255) NOT NULL,
-        tenant_id VARCHAR(255) NOT NULL,
+        tenant_id TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
 
