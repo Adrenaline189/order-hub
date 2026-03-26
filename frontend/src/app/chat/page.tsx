@@ -30,10 +30,7 @@ interface Conversation {
 
 const PROVIDERS = [
   { key: 'all', label: 'all', icon: '🌐' },
-  { key: 'line', label: 'LINE', icon: '💬' },
-  { key: 'shopee', label: 'Shopee', icon: '🛒' },
-  { key: 'lazada', label: 'Lazada', icon: '🛍️' },
-  { key: 'tiktok', label: 'TikTok', icon: '🎵' },
+  { key: 'line', label: 'LINE', icon: '💚' },
 ];
 
 const PROVIDER_COLORS: Record<string, string> = {
