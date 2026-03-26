@@ -61,7 +61,7 @@ export default function SyncStatusPage() {
       ]);
       const statusData = await statusRes.json();
       const alertsData = await alertsRes.json();
-      setSyncStatus(statusData.integrations || []);
+      setSyncStatus(statusData.sync_status || statusData.integrations || []);
       setAlerts(alertsData.alerts || []);
     } catch (err) {
       console.error('Failed:', err);
