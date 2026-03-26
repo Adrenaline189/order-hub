@@ -7,6 +7,7 @@ import ConnectShopifyModal from '@/components/ConnectShopifyModal';
 import ConnectLazadaModal from '@/components/ConnectLazadaModal';
 import ConnectShopeeModal from '@/components/ConnectShopeeModal';
 import ConnectLINEModal from '@/components/ConnectLINEModal';
+import ConnectTikTokModal from '@/components/ConnectTikTokModal';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 const TENANT_ID = 'test-shop';
@@ -109,6 +110,7 @@ export default function ConnectionsPage() {
   const [showLazadaModal, setShowLazadaModal] = useState(false);
   const [showShopeeModal, setShowShopeeModal] = useState(false);
   const [showLINEModal, setShowLINEModal] = useState(false);
+  const [showTikTokModal, setShowTikTokModal] = useState(false);
   const { t, language } = useLanguage();
 
   useEffect(() => {
@@ -172,12 +174,7 @@ export default function ConnectionsPage() {
     } else if (platform === 'line') {
       setShowLINEModal(true);
     } else if (platform === 'tiktok') {
-      setMessage({ 
-        type: 'error', 
-        text: language === 'th' 
-          ? `${platform} กำลังอยู่ในช่วงพัฒนา - ติดต่อทีมงาน` 
-          : `${platform} coming soon - Contact us`
-      });
+      setShowTikTokModal(true);
     }
   };
 
@@ -471,6 +468,13 @@ export default function ConnectionsPage() {
         <ConnectLINEModal
           isOpen={showLINEModal}
           onClose={() => setShowLINEModal(false)}
+          onSuccess={fetchIntegrations}
+        />
+
+        {/* TikTok Connect Modal */}
+        <ConnectTikTokModal
+          isOpen={showTikTokModal}
+          onClose={() => setShowTikTokModal(false)}
           onSuccess={fetchIntegrations}
         />
       </div>
