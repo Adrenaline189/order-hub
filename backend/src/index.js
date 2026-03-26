@@ -13,6 +13,7 @@ const lazadaConnect = require('./routes/lazada-connect');
 const shopeeConnect = require('./routes/shopee-connect');
 const lineConnect = require('./routes/line-connect');
 const tiktokConnect = require('./routes/tiktok-connect');
+const chatRoutes = require('./routes/chat');
 const syncRoutes = require('./routes/sync');
 const dashboardRoutes = require('./routes/dashboard');
 
@@ -42,6 +43,7 @@ fastify.register(lazadaConnect);
 fastify.register(shopeeConnect);
 fastify.register(lineConnect);
 fastify.register(tiktokConnect);
+fastify.register(chatRoutes);
 fastify.register(syncRoutes);
 fastify.register(dashboardRoutes);
 fastify.register(apiRoutes);

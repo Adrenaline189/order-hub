@@ -86,7 +86,12 @@ export default function ChatPage() {
 
   const fetchMessages = async (conversationId: string) => {
     try {
-      const res = await fetch(`${API_URL}/chat/conversations/${conversationId}?tenant_id=${TENANT_ID}`);
+      const params = new URLSearchParams({
+        tenant_id: TENANT_ID,
+        conversation_id: conversationId,
+        provider: selectedConversation?.provider || 'line'
+      });
+      const res = await fetch(`${API_URL}/chat/messages?${params}`);
       const data = await res.json();
       setMessages(data.messages || []);
     } catch (err) {
@@ -99,11 +104,13 @@ export default function ChatPage() {
     
     setSending(true);
     try {
-      const res = await fetch(`${API_URL}/chat/conversations/${selectedConversation.id}/messages`, {
+      const res = await fetch(`${API_URL}/chat/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           tenant_id: TENANT_ID,
+          conversation_id: selectedConversation.id,
+          provider: selectedConversation.provider,
           content: newMessage.trim(),
         }),
       });
