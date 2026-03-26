@@ -171,52 +171,6 @@ export default function ConnectionsPage() {
     }
   };
 
-  const connectShopify = async () => {
-    // Old OAuth flow - now replaced by modal
-    setConnecting('shopify');
-    try {
-      const shop = prompt(
-        language === 'th' 
-          ? 'กรอก Shopify store URL\nเช่น: my-store.myshopify.com' 
-          : 'Enter Shopify store URL\ne.g.: my-store.myshopify.com',
-        'demo-store.myshopify.com'
-      );
-      
-      if (!shop) {
-        setConnecting(null);
-        return;
-      }
-      
-      const res = await fetch(`${API_URL}/auth/shopify?shop=${shop}&tenant_id=${TENANT_ID}`);
-      const data = await res.json();
-      
-      if (data.auth_url) {
-        window.open(data.auth_url, 'shopify_oauth', 'width=600,height=700');
-      } else {
-        throw new Error(data.error?.message || 'Failed to get auth URL');
-      }
-    } catch (err: any) {
-      setMessage({ type: 'error', text: err.message });
-    } finally {
-      setTimeout(() => setConnecting(null), 3000);
-    }
-  };
-
-  const handleConnect = (platform: string) => {
-    if (platform === 'line') {
-      connectLINE();
-    } else if (platform === 'shopify') {
-      connectShopify();
-    } else if (platform === 'shopee' || platform === 'lazada' || platform === 'tiktok') {
-      setMessage({ 
-        type: 'error', 
-        text: language === 'th' 
-          ? `${platform} กำลังอยู่ในช่วงพัฒนา - ติดต่อทีมงาน` 
-          : `${platform} coming soon - Contact us`
-      });
-    }
-  };
-
   const handleChat = (platform: string) => {
     if (platform === 'line') {
       window.location.href = '/chat';
@@ -481,14 +435,14 @@ export default function ConnectionsPage() {
             <li>• {language === 'th' ? 'Shopee/Lazada ต้องเป็น Partner หรือใช้ API credentials ของตัวเอง' : 'Shopee/Lazada requires Partner status or your own API credentials'}</li>
           </ul>
         </div>
+
+        {/* Shopify Connect Modal */}
+        <ConnectShopifyModal
+          isOpen={showShopifyModal}
+          onClose={() => setShowShopifyModal(false)}
+          onSuccess={fetchIntegrations}
+        />
       </div>
     </Layout>
-
-    {/* Shopify Connect Modal */}
-    <ConnectShopifyModal
-      isOpen={showShopifyModal}
-      onClose={() => setShowShopifyModal(false)}
-      onSuccess={fetchIntegrations}
-    />
   );
 }
