@@ -5,6 +5,8 @@ import Layout from '@/components/Layout';
 import { useLanguage } from '@/context/LanguageContext';
 import ConnectShopifyModal from '@/components/ConnectShopifyModal';
 import ConnectLazadaModal from '@/components/ConnectLazadaModal';
+import ConnectShopeeModal from '@/components/ConnectShopeeModal';
+import ConnectLINEModal from '@/components/ConnectLINEModal';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 const TENANT_ID = 'test-shop';
@@ -105,6 +107,8 @@ export default function ConnectionsPage() {
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showShopifyModal, setShowShopifyModal] = useState(false);
   const [showLazadaModal, setShowLazadaModal] = useState(false);
+  const [showShopeeModal, setShowShopeeModal] = useState(false);
+  const [showLINEModal, setShowLINEModal] = useState(false);
   const { t, language } = useLanguage();
 
   useEffect(() => {
@@ -163,9 +167,11 @@ export default function ConnectionsPage() {
       setShowShopifyModal(true);
     } else if (platform === 'lazada') {
       setShowLazadaModal(true);
+    } else if (platform === 'shopee') {
+      setShowShopeeModal(true);
     } else if (platform === 'line') {
-      connectLINE();
-    } else if (platform === 'shopee' || platform === 'tiktok') {
+      setShowLINEModal(true);
+    } else if (platform === 'tiktok') {
       setMessage({ 
         type: 'error', 
         text: language === 'th' 
@@ -451,6 +457,20 @@ export default function ConnectionsPage() {
         <ConnectLazadaModal
           isOpen={showLazadaModal}
           onClose={() => setShowLazadaModal(false)}
+          onSuccess={fetchIntegrations}
+        />
+
+        {/* Shopee Connect Modal */}
+        <ConnectShopeeModal
+          isOpen={showShopeeModal}
+          onClose={() => setShowShopeeModal(false)}
+          onSuccess={fetchIntegrations}
+        />
+
+        {/* LINE Connect Modal */}
+        <ConnectLINEModal
+          isOpen={showLINEModal}
+          onClose={() => setShowLINEModal(false)}
           onSuccess={fetchIntegrations}
         />
       </div>

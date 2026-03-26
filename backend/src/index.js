@@ -10,6 +10,8 @@ const { initDatabase, query, db, refresh, save } = require('./db-compat');
 const apiRoutes = require('./routes/api-v1');
 const shopifyConnect = require('./routes/shopify-connect');
 const lazadaConnect = require('./routes/lazada-connect');
+const shopeeConnect = require('./routes/shopee-connect');
+const lineConnect = require('./routes/line-connect');
 const syncRoutes = require('./routes/sync');
 const dashboardRoutes = require('./routes/dashboard');
 
@@ -36,6 +38,8 @@ fastify.get('/', async () => ({
 // Register API routes
 fastify.register(shopifyConnect);
 fastify.register(lazadaConnect);
+fastify.register(shopeeConnect);
+fastify.register(lineConnect);
 fastify.register(syncRoutes);
 fastify.register(dashboardRoutes);
 fastify.register(apiRoutes);
