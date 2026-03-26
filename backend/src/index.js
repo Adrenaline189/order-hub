@@ -10,6 +10,7 @@ const { initDatabase, query, db, refresh, save } = require('./db-compat');
 const apiRoutes = require('./routes/api-v1');
 const shopifyConnect = require('./routes/shopify-connect');
 const syncRoutes = require('./routes/sync');
+const dashboardRoutes = require('./routes/dashboard');
 
 // Register CORS
 fastify.register(require('@fastify/cors'), {
@@ -34,6 +35,7 @@ fastify.get('/', async () => ({
 // Register API routes
 fastify.register(shopifyConnect);
 fastify.register(syncRoutes);
+fastify.register(dashboardRoutes);
 fastify.register(apiRoutes);
 
 // Auth routes placeholder
