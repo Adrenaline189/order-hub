@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { useLanguage } from '@/context/LanguageContext';
+import ConnectShopifyModal from '@/components/ConnectShopifyModal';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 const TENANT_ID = 'test-shop';
@@ -101,6 +102,7 @@ export default function ConnectionsPage() {
   const [loading, setLoading] = useState(true);
   const [connecting, setConnecting] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [showShopifyModal, setShowShopifyModal] = useState(false);
   const { t, language } = useLanguage();
 
   useEffect(() => {
@@ -154,7 +156,23 @@ export default function ConnectionsPage() {
     }
   };
 
+  const handleConnect = (platform: string) => {
+    if (platform === 'shopify') {
+      setShowShopifyModal(true);
+    } else if (platform === 'line') {
+      connectLINE();
+    } else if (platform === 'shopee' || platform === 'lazada' || platform === 'tiktok') {
+      setMessage({ 
+        type: 'error', 
+        text: language === 'th' 
+          ? `${platform} กำลังอยู่ในช่วงพัฒนา - ติดต่อทีมงาน` 
+          : `${platform} coming soon - Contact us`
+      });
+    }
+  };
+
   const connectShopify = async () => {
+    // Old OAuth flow - now replaced by modal
     setConnecting('shopify');
     try {
       const shop = prompt(
@@ -465,5 +483,12 @@ export default function ConnectionsPage() {
         </div>
       </div>
     </Layout>
+
+    {/* Shopify Connect Modal */}
+    <ConnectShopifyModal
+      isOpen={showShopifyModal}
+      onClose={() => setShowShopifyModal(false)}
+      onSuccess={fetchIntegrations}
+    />
   );
 }
