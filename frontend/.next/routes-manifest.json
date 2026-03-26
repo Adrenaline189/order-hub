@@ -20,6 +20,14 @@
   },
   "dynamicRoutes": [
     {
+      "page": "/connections/[provider]",
+      "regex": "^/connections/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPprovider": "nxtPprovider"
+      },
+      "namedRegex": "^/connections/(?<nxtPprovider>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/orders/[id]",
       "regex": "^/orders/([^/]+?)(?:/)?$",
       "routeKeys": {
