@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { useLanguage } from '@/context/LanguageContext';
 import ConnectShopifyModal from '@/components/ConnectShopifyModal';
+import ConnectLazadaModal from '@/components/ConnectLazadaModal';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 const TENANT_ID = 'test-shop';
@@ -103,6 +104,7 @@ export default function ConnectionsPage() {
   const [connecting, setConnecting] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showShopifyModal, setShowShopifyModal] = useState(false);
+  const [showLazadaModal, setShowLazadaModal] = useState(false);
   const { t, language } = useLanguage();
 
   useEffect(() => {
@@ -159,9 +161,11 @@ export default function ConnectionsPage() {
   const handleConnect = (platform: string) => {
     if (platform === 'shopify') {
       setShowShopifyModal(true);
+    } else if (platform === 'lazada') {
+      setShowLazadaModal(true);
     } else if (platform === 'line') {
       connectLINE();
-    } else if (platform === 'shopee' || platform === 'lazada' || platform === 'tiktok') {
+    } else if (platform === 'shopee' || platform === 'tiktok') {
       setMessage({ 
         type: 'error', 
         text: language === 'th' 
@@ -440,6 +444,13 @@ export default function ConnectionsPage() {
         <ConnectShopifyModal
           isOpen={showShopifyModal}
           onClose={() => setShowShopifyModal(false)}
+          onSuccess={fetchIntegrations}
+        />
+
+        {/* Lazada Connect Modal */}
+        <ConnectLazadaModal
+          isOpen={showLazadaModal}
+          onClose={() => setShowLazadaModal(false)}
           onSuccess={fetchIntegrations}
         />
       </div>
