@@ -62,9 +62,12 @@ export default function ManageConnectionPage() {
       
       if (data.success) {
         router.push('/connections');
+      } else {
+        alert(data.error || 'Disconnect failed');
       }
     } catch (err) {
       console.error('Disconnect failed:', err);
+      alert('Disconnect failed');
     } finally {
       setDisconnected(false);
     }
@@ -294,6 +297,9 @@ export default function ManageConnectionPage() {
           onSuccess={() => {
             setShowEditModal(false);
             fetchIntegration();
+          }}
+          initialData={{
+            shop_domain: integration?.shop_domain,
           }}
         />
       )}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -9,11 +9,14 @@ interface ConnectShopifyModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
+  initialData?: {
+    shop_domain?: string;
+  };
 }
 
-export default function ConnectShopifyModal({ isOpen, onClose, onSuccess }: ConnectShopifyModalProps) {
+export default function ConnectShopifyModal({ isOpen, onClose, onSuccess, initialData }: ConnectShopifyModalProps) {
   const [formData, setFormData] = useState({
-    store_url: '',
+    store_url: initialData?.shop_domain || '',
     api_key: '',
     api_secret: '',
     access_token: '',
@@ -21,6 +24,18 @@ export default function ConnectShopifyModal({ isOpen, onClose, onSuccess }: Conn
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const { t, language } = useLanguage();
+
+  // Reset form when modal opens with initial data
+  useEffect(() => {
+    if (isOpen && initialData?.shop_domain) {
+      setFormData({
+        store_url: initialData.shop_domain,
+        api_key: '',
+        api_secret: '',
+        access_token: '',
+      });
+    }
+  }, [isOpen, initialData]);
 
   if (!isOpen) return null;
 
